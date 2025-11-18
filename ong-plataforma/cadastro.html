@@ -24,9 +24,9 @@
 
     <nav id="main-nav" aria-label="Menu principal">
       <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
-        <li><a href="cadastro.html">Cadastro</a></li>
+        <li><a href="index.html" data-link>Início</a></li>
+        <li><a href="projetos.html" data-link>Projetos</a></li>
+        <li><a href="cadastro.html" data-link>Cadastro</a></li>
       </ul>
     </nav>
   </header>
@@ -34,9 +34,9 @@
   <main id="main" class="container">
     <section class="card" aria-labelledby="cad-title">
       <h2 id="cad-title">Formulário de cadastro</h2>
-      <p class="small">Preencha os campos obrigatórios. Validação é feita pelo próprio navegador.</p>
+      <p class="small">Preencha os campos obrigatórios. Validação é feita pelo próprio navegador e por regras adicionais.</p>
 
-      <form action="#" method="post" novalidate>
+      <form id="cad-form" action="#" method="post" novalidate>
         <fieldset>
           <legend>Dados pessoais</legend>
 
@@ -61,7 +61,7 @@
             <div>
               <label for="cpf">CPF <span class="small" aria-hidden="true">*</span></label>
               <input id="cpf" name="cpf" type="text" required pattern="\d{3}\.\d{3}\.\d{3}\-\d{2}"
-                placeholder="000.000.000-00" aria-describedby="cpf-help">
+                placeholder="000.000.000-00" aria-describedby="cpf-help" maxlength="14">
               <div id="cpf-help" class="small">Formato esperado: 000.000.000-00</div>
             </div>
           </div>
@@ -69,7 +69,7 @@
           <div class="form-row cols-2 mt-1">
             <div>
               <label for="telefone">Telefone</label>
-              <input id="telefone" name="telefone" type="tel" placeholder="(00) 00000-0000">
+              <input id="telefone" name="telefone" type="tel" placeholder="(00) 00000-0000" maxlength="15">
             </div>
 
             <div>
@@ -93,7 +93,7 @@
               <label for="estado">Estado</label>
               <select id="estado" name="estado" aria-label="Estado">
                 <option value="">Selecione</option>
-                <option value="SP">Brasília</option>
+                <option value="DF">Brasília</option>
                 <option value="RJ">Rio de Janeiro</option>
                 <option value="MG">Minas Gerais</option>
               </select>
@@ -134,50 +134,7 @@
 
   <script src="assets/js/masks.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
-
-  <script>
-    const form = document.querySelector("form");
-
-    form.addEventListener("submit", function (e) {
-      let erros = [];
-
-      const nome = document.getElementById("nome");
-      const email = document.getElementById("email");
-      const cpf = document.getElementById("cpf");
-
-      if (nome.value.trim().length < 3) {
-        erros.push("O nome deve ter pelo menos 3 caracteres.");
-      }
-
-      if (!email.value.trim()) {
-        erros.push("O e-mail é obrigatório.");
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-        erros.push("Informe um e-mail válido.");
-      }
-
-      const cpfRegex = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
-      if (!cpf.value.trim()) {
-        erros.push("O CPF é obrigatório.");
-      } else if (!cpfRegex.test(cpf.value.trim())) {
-        erros.push("Formato de CPF inválido. Use 000.000.000-00.");
-      }
-
-      if (erros.length > 0) {
-        e.preventDefault();
-
-        if(nome) nome.classList.add('input-error');
-        if(email) email.classList.add('input-error');
-        if(cpf) cpf.classList.add('input-error');
-        alert("Corrija os seguintes erros:\n\n" + erros.join("\n"));
-      } else {
-        
-        e.preventDefault();
-        window.uiToast('Cadastro enviado com sucesso! Obrigado.', 'success', 3000);
-        form.reset();
-      }
-    });
-  </script>
-
+  <script src="assets/js/app.js" defer></script>
 </body>
 
 </html>
