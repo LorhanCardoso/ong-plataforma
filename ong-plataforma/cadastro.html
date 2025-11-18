@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ONG Cidadania — Cadastro de Voluntário</title>
+  <meta name="description" content="Formulário de cadastro para voluntariado e doadores.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <header class="container">
+    <div class="brand">
+      <img src="assets/images/logo.png" alt="Logo da ONG Cidadania">
+      <h1 style="margin:0">Cadastro</h1>
+    </div>
+    <nav aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <section class="card" aria-labelledby="cad-title">
+      <h2 id="cad-title">Formulário de cadastro</h2>
+      <p class="small">Preencha os campos obrigatórios. Validação é feita pelo próprio navegador.</p>
+
+      <form action="#" method="post" novalidate>
+        <fieldset>
+          <legend>Dados pessoais</legend>
+
+          <div class="form-row cols-2">
+            <div>
+              <label for="nome">Nome completo <span class="small" aria-hidden="true">*</span></label>
+              <input id="nome" name="nome" type="text" required minlength="3" placeholder="Seu nome completo">
+            </div>
+
+            <div>
+              <label for="nascimento">Data de nascimento</label>
+              <input id="nascimento" name="nascimento" type="date" max="2007-12-31">
+            </div>
+          </div>
+
+          <div class="form-row cols-2" style="margin-top:8px">
+            <div>
+              <label for="email">E-mail <span class="small" aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" required placeholder="exemplo@dominio.com">
+            </div>
+
+            <div>
+              <label for="cpf">CPF <span class="small" aria-hidden="true">*</span></label>
+              <input id="cpf" name="cpf" type="text" required pattern="\d{3}\.\d{3}\.\d{3}\-\d{2}"
+                placeholder="000.000.000-00" aria-describedby="cpf-help">
+              <div id="cpf-help" class="small">Formato esperado: 000.000.000-00</div>
+            </div>
+          </div>
+
+          <div class="form-row cols-2" style="margin-top:8px">
+            <div>
+              <label for="telefone">Telefone</label>
+              <input id="telefone" name="telefone" type="tel" placeholder="(00) 00000-0000">
+            </div>
+
+            <div>
+              <label for="cep">CEP</label>
+              <input id="cep" name="cep" type="text" placeholder="00000-000" maxlength="9">
+            </div>
+          </div>
+
+          <div style="margin-top:8px">
+            <label for="endereco">Endereço</label>
+            <input id="endereco" name="endereco" type="text" placeholder="Rua, número, complemento">
+          </div>
+
+          <div class="form-row cols-2" style="margin-top:8px">
+            <div>
+              <label for="cidade">Cidade</label>
+              <input id="cidade" name="cidade" type="text">
+            </div>
+
+            <div>
+              <label for="estado">Estado</label>
+              <select id="estado" name="estado" aria-label="Estado">
+                <option value="">Selecione</option>
+                <option value="SP">Brasília</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Participação</legend>
+          <label for="interesse">Área de interesse</label>
+          <select id="interesse" name="interesse">
+            <option value="">Selecione</option>
+            <option value="educacao">Educação</option>
+            <option value="meio-ambiente">Meio ambiente</option>
+            <option value="saude">Saúde</option>
+          </select>
+
+          <div style="margin-top:8px">
+            <label for="experiencia">Experiência (breve)</label>
+            <textarea id="experiencia" name="experiencia" rows="4"
+              placeholder="Descreva sua experiência ou disponibilidade"></textarea>
+          </div>
+        </fieldset>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <button type="submit">Enviar cadastro</button>
+          <button type="reset" style="background:#ccc;color:#000">Limpar</button>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <footer class="container small">
+    <p>© 2025 ONG Cidadania — Proteção de dados: informamos que os dados serão tratados conforme legislação aplicável.
+    </p>
+  </footer>
+
+  <script src="assets/js/masks.js" defer></script>
+  <script>
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (e) {
+      let erros = [];
+
+      const nome = document.getElementById("nome");
+      const email = document.getElementById("email");
+      const cpf = document.getElementById("cpf");
+
+      if (nome.value.trim().length < 3) {
+        erros.push("O nome deve ter pelo menos 3 caracteres.");
+      }
+
+      if (!email.value.trim()) {
+        erros.push("O e-mail é obrigatório.");
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        erros.push("Informe um e-mail válido.");
+      }
+
+      const cpfRegex = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
+      if (!cpf.value.trim()) {
+        erros.push("O CPF é obrigatório.");
+      } else if (!cpfRegex.test(cpf.value.trim())) {
+        erros.push("Formato de CPF inválido. Use 000.000.000-00.");
+      }
+
+      if (erros.length > 0) {
+        e.preventDefault();
+        alert("Corrija os seguintes erros:\n\n" + erros.join("\n"));
+      }
+    });
+  </script>
+
+</body>
+
+</html>
