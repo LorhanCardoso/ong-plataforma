@@ -11,21 +11,34 @@
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
   <header role="banner" class="container">
-    <div class="brand">
-      <img src="assets/images/logo.png" alt="Logo da ONG Cidadania">
-      <div>
-        <h1 style="margin:0;font-size:1.2rem">ONG Cidadania</h1>
-        <p class="small" style="margin:0">Transformando realidades — educação e cidadania</p>
+    <div class="navbar">
+      <div class="brand">
+        <img src="assets/images/logo.png" alt="Logo da ONG Cidadania">
+        <div>
+          <h1 style="margin:0;font-size:1.2rem">ONG Cidadania</h1>
+          <p class="small" style="margin:0">Transformando realidades — educação e cidadania</p>
+        </div>
       </div>
-    </div>
 
-    <nav role="navigation" aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
-        <li><a href="cadastro.html">Cadastro</a></li>
-      </ul>
-    </nav>
+      <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav id="main-nav" role="navigation" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li class="nav-item">
+            <a href="projetos.html" aria-haspopup="true" aria-expanded="false">Projetos ▾</a>
+            <div class="dropdown" role="menu" aria-hidden="true">
+              <a href="projetos.html">Projetos em andamento</a>
+              <a href="projetos.html#como-doar">Como doar</a>
+              <a href="cadastro.html">Seja voluntário</a>
+            </div>
+          </li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="main" class="container" role="main">
@@ -61,7 +74,7 @@
       <aside class="card" aria-labelledby="doe">
         <h2 id="doe">Doações e apoio</h2>
         <p>Contribua com nossas campanhas mensais. As doações servem para manter projetos educacionais em curso.</p>
-        <a href="projetos.html">Veja os projetos</a>
+        <a class="btn btn-secondary" href="projetos.html">Veja os projetos</a>
       </aside>
     </div>
 
@@ -75,11 +88,12 @@
   </main>
 
   <footer role="contentinfo">
-    <div class="container small">
+    <div class="container small footer">
       <p>© 2025 ONG Cidadania — Relatórios de transparência disponíveis mediante solicitação.</p>
     </div>
   </footer>
 
   <script src="assets/js/masks.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
 </body>
 </html>
