@@ -17,7 +17,12 @@
       <img src="assets/images/logo.png" alt="Logo da ONG Cidadania">
       <h1 style="margin:0">Cadastro</h1>
     </div>
-    <nav aria-label="Menu principal">
+
+    <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+
+    <nav id="main-nav" aria-label="Menu principal">
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="projetos.html">Projetos</a></li>
@@ -47,7 +52,7 @@
             </div>
           </div>
 
-          <div class="form-row cols-2" style="margin-top:8px">
+          <div class="form-row cols-2 mt-1">
             <div>
               <label for="email">E-mail <span class="small" aria-hidden="true">*</span></label>
               <input id="email" name="email" type="email" required placeholder="exemplo@dominio.com">
@@ -61,7 +66,7 @@
             </div>
           </div>
 
-          <div class="form-row cols-2" style="margin-top:8px">
+          <div class="form-row cols-2 mt-1">
             <div>
               <label for="telefone">Telefone</label>
               <input id="telefone" name="telefone" type="tel" placeholder="(00) 00000-0000">
@@ -78,7 +83,7 @@
             <input id="endereco" name="endereco" type="text" placeholder="Rua, número, complemento">
           </div>
 
-          <div class="form-row cols-2" style="margin-top:8px">
+          <div class="form-row cols-2 mt-1">
             <div>
               <label for="cidade">Cidade</label>
               <input id="cidade" name="cidade" type="text">
@@ -114,8 +119,8 @@
         </fieldset>
 
         <div style="display:flex;gap:8px;align-items:center">
-          <button type="submit">Enviar cadastro</button>
-          <button type="reset" style="background:#ccc;color:#000">Limpar</button>
+          <button class="btn btn-primary" type="submit">Enviar cadastro</button>
+          <button class="btn" type="reset" style="background:#ccc;color:#000">Limpar</button>
         </div>
       </form>
 
@@ -128,6 +133,8 @@
   </footer>
 
   <script src="assets/js/masks.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+
   <script>
     const form = document.querySelector("form");
 
@@ -157,7 +164,16 @@
 
       if (erros.length > 0) {
         e.preventDefault();
+
+        if(nome) nome.classList.add('input-error');
+        if(email) email.classList.add('input-error');
+        if(cpf) cpf.classList.add('input-error');
         alert("Corrija os seguintes erros:\n\n" + erros.join("\n"));
+      } else {
+        
+        e.preventDefault();
+        window.uiToast('Cadastro enviado com sucesso! Obrigado.', 'success', 3000);
+        form.reset();
       }
     });
   </script>
