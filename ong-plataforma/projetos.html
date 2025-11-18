@@ -15,10 +15,19 @@
       <img src="assets/images/logo.png" alt="Logo da ONG Cidadania">
       <h1 style="margin:0">Projetos</h1>
     </div>
-    <nav aria-label="Menu principal">
+    <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+    <nav id="main-nav" aria-label="Menu principal">
       <ul>
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
+        <li class="nav-item">
+          <a href="projetos.html" aria-haspopup="true">Projetos ▾</a>
+          <div class="dropdown" role="menu">
+            <a href="projetos.html">Projetos em andamento</a>
+            <a href="projetos.html#como-doar">Como doar</a>
+          </div>
+        </li>
         <li><a href="cadastro.html">Cadastro</a></li>
       </ul>
     </nav>
@@ -28,25 +37,31 @@
     <section class="card" aria-labelledby="projetos-title">
       <h2 id="projetos-title">Projetos em andamento</h2>
 
-      <article class="card" aria-labelledby="p1" style="margin-bottom:10px">
-        <figure>
-          <img src="assets/images/projeto1.jpg" alt="Crianças em sala de aula" />
-          <figcaption class="small">Projeto Educação Viva — aulas complementares.</figcaption>
-        </figure>
-        <h3 id="p1">Educação Viva</h3>
-        <p>Atividades extracurriculares para crianças e adolescentes, com foco em leitura e cidadania.</p>
-        <p><strong>Como participar:</strong> clique em <a href="cadastro.html">cadastro</a> e inscreva-se como voluntário.</p>
-      </article>
+      <div class="projects-grid grid" style="margin-bottom:12px">
+        <article class="card" aria-labelledby="p1">
+          <figure>
+            <img src="assets/images/projeto1.jpg" alt="Crianças em sala de aula" />
+            <figcaption class="small">Projeto Educação Viva — aulas complementares.</figcaption>
+          </figure>
+          <div class="mt-1">
+            <h3 id="p1" class="card-title">Educação Viva <span class="badge">Educação</span></h3>
+            <p>Atividades extracurriculares para crianças e adolescentes, com foco em leitura e cidadania.</p>
+            <p><strong>Como participar:</strong> clique em <a href="cadastro.html">cadastro</a> e inscreva-se como voluntário.</p>
+          </div>
+        </article>
 
-      <article class="card" aria-labelledby="p2">
-        <figure>
-          <img src="assets/images/voluntariado.jpg" alt="Grupo de voluntários plantando árvores" />
-          <figcaption class="small">Mutirões ambientais e capacitações.</figcaption>
-        </figure>
-        <h3 id="p2">Verde e Cidadania</h3>
-        <p>Mutirões e oficinas voltadas para sustentabilidade local.</p>
-        <p><strong>Doações:</strong> apoio com materiais e recursos financeiros para organizar atividades.</p>
-      </article>
+        <article class="card" aria-labelledby="p2">
+          <figure>
+            <img src="assets/images/voluntariado.jpg" alt="Grupo de voluntários plantando árvores" />
+            <figcaption class="small">Mutirões ambientais e capacitações.</figcaption>
+          </figure>
+          <div class="mt-1">
+            <h3 id="p2" class="card-title">Verde e Cidadania <span class="badge">Meio ambiente</span></h3>
+            <p>Mutirões e oficinas voltadas para sustentabilidade local.</p>
+            <p><strong>Doações:</strong> apoio com materiais e recursos financeiros para organizar atividades.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
     <aside class="card" style="margin-top:12px" aria-labelledby="como-doar">
@@ -60,5 +75,6 @@
   </footer>
 
   <script src="assets/js/masks.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
 </body>
 </html>
