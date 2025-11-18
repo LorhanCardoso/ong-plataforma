@@ -18,6 +18,7 @@ ong-plataforma/
 │  ├─ css/
 │  │  └─ style.css
 │  ├─ js/
+│  │  └─ app.js
 │  │  └─ masks.js
 │  │  └─ ui.js
 │  └─ images/
