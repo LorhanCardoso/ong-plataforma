@@ -1,14 +1,15 @@
 document.addEventListener('DOMContentLoaded', function(){
-
   const nav = document.querySelector('nav[aria-label="Menu principal"]');
-  const toggle = document.querySelector('.nav-toggle');
-  if(toggle && nav){
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      const expanded = nav.classList.contains('open');
-      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    });
-  }
+  const toggles = document.querySelectorAll('.nav-toggle');
+  toggles.forEach(toggle=>{
+    if(toggle && nav){
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        const expanded = nav.classList.contains('open');
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      });
+    }
+  });
 
   const toastArea = document.createElement('div');
   toastArea.className = 'toast-area';
