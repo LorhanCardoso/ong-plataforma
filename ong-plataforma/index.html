@@ -26,16 +26,16 @@
 
       <nav id="main-nav" role="navigation" aria-label="Menu principal">
         <ul>
-          <li><a href="index.html">Início</a></li>
+          <li><a href="index.html" data-link>Início</a></li>
           <li class="nav-item">
-            <a href="projetos.html" aria-haspopup="true" aria-expanded="false">Projetos ▾</a>
+            <a href="projetos.html" aria-haspopup="true" data-link>Projetos ▾</a>
             <div class="dropdown" role="menu" aria-hidden="true">
-              <a href="projetos.html">Projetos em andamento</a>
-              <a href="projetos.html#como-doar">Como doar</a>
-              <a href="cadastro.html">Seja voluntário</a>
+              <a href="projetos.html" data-link>Projetos em andamento</a>
+              <a href="projetos.html#como-doar" data-link>Como doar</a>
+              <a href="cadastro.html" data-link>Seja voluntário</a>
             </div>
           </li>
-          <li><a href="cadastro.html">Cadastro</a></li>
+          <li><a href="cadastro.html" data-link>Cadastro</a></li>
         </ul>
       </nav>
     </div>
@@ -74,7 +74,7 @@
       <aside class="card" aria-labelledby="doe">
         <h2 id="doe">Doações e apoio</h2>
         <p>Contribua com nossas campanhas mensais. As doações servem para manter projetos educacionais em curso.</p>
-        <a class="btn btn-secondary" href="projetos.html">Veja os projetos</a>
+        <a class="btn btn-secondary" href="projetos.html" data-link>Veja os projetos</a>
       </aside>
     </div>
 
@@ -95,5 +95,6 @@
 
   <script src="assets/js/masks.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
 </body>
 </html>
