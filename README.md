@@ -19,6 +19,7 @@ ong-plataforma/
 │  │  └─ style.css
 │  ├─ js/
 │  │  └─ masks.js
+│  │  └─ ui.js
 │  └─ images/
 │     ├─ logo.png
 │     ├─ banner-home.jpg
